@@ -5,15 +5,16 @@
   "dependencies": {
     "express": "^4.14.0",
     "material-design-lite": "^1.1.3",
+    "pug": "^2.0.0-beta3",
     "socket.io": "^1.4.8",
     "twitter": "^1.3.0"
   },
   "devDependencies": {
     "browserify": "^13.0.1",
     "nodemon": "^1.9.2"
-  },  
-  "scripts": {
-    "build": "browserify client/main.js -o public/app.js",
-    "start": "npm run nodemon server.js"
   },
+  "scripts": {
+    "build": "browserify ./main.js -o public/app.js",
+    "start": "nodemon server.js"
+  }
 }

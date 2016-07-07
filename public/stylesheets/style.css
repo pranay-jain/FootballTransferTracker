@@ -1,0 +1,11 @@
+body {
+  background: #fff;
+  margin: 0;
+  font-family: 'Lato', Arial;
+}
+section {
+  width: 100%;
+}
+.mdl-cell {
+  background: #ddd;
+}
