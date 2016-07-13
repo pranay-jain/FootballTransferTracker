@@ -1,20 +1,16 @@
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
+var db = mongoose.connection;
+db.on('error', function () {
+	console.log("Couldn't establish a database");
+});
 
-// var db = mongoose.connection;
-// db.on('error', function () {
-// 	console.log("Couldn't establish a database");
-// });
+var tweetSchema = new mongoose.Schema(
+{
+	  twid 		: String
+	, text 		: String
+	, name 		: String
+	, avatar 	: String
+});
 
-// db.once('open', function () {
-
-// 	var tweetSchema = mongoose.Schema('tweet', {
-// 		twid 	: String,
-// 		text 	: String,
-// 		name 	: String,
-// 		avatar 	: String
-// 	});
-
-// 	var model = mongoose.model('Tweet', tweetSchema);
-// 	module.exports = model;
-// });
+module.exports = mongoose.model('tweet', tweetSchema);

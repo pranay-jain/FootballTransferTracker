@@ -6,12 +6,17 @@ var express = require('express'),
 	config = require('./config'),
 	streamHandler = require('./streamHandler');
 
+var server = require('http').Server(app);
+
 var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + "/public"));
-
 app.set('views', './views');
 app.set('view engine', 'pug');
+
+app.disable('etag');
+
+var io = require('socket.io')(server);
 
 app.get('/', (req, res) => {
 	res.render('index');
@@ -19,14 +24,14 @@ app.get('/', (req, res) => {
 
 // ---- Establishing connection with Twitter API 
 var client = new Twitter(config.twitter);	
-var query  = 'euro cup';
+var query  = 'france';
 var stream = client.stream('statuses/filter', {track: query});
-streamHandler(stream);
+streamHandler(stream, io);
 
 // ---- Connecting Mongoose to a local databse
 mongoose.connect('mongodb://localhost/transfer-tweets');
 
-const server = app.listen(port, (req, res) => {
+server.listen(port, (req, res) => {
 	console.log("App running on port " + port);
-	console.log(process.env.consumer_key);
 });
+
