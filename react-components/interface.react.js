@@ -1,11 +1,15 @@
-var React = require('react'),,
-	JSX = require('react-jsx');
+var React = require('react'),
+	Header = require('./header.react'),
+	Layout = require('./layout.react')
 
-JSX.install();
-
-var mainInterface = React.createClass({
+module.exports = React.createClass({
 	render: function () {
-		<TeamHeader />
-		
+		return (
+			<div className="content">
+				<Header />
+				<Layout team={this.props.team}/>
+			</div>
+		)
 	}
 });
+

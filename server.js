@@ -3,8 +3,10 @@ var express = require('express'),
 	dotenv = require('dotenv').config(),
 	Twitter = require('twitter'),
 	mongoose = require('mongoose'),
+	babel = require('babel-register'),
 	config = require('./config'),
-	streamHandler = require('./streamHandler');
+	streamHandler = require('./streamHandler'),
+	routes = require('./routes');
 
 var server = require('http').Server(app);
 
@@ -18,13 +20,12 @@ app.disable('etag');
 
 var io = require('socket.io')(server);
 
-app.get('/', (req, res) => {
-	res.render('index');
-});
+app.get('/', routes.home);
+app.get('/results', routes.mainpage);
 
 // ---- Establishing connection with Twitter API 
 var client = new Twitter(config.twitter);	
-var query  = 'france';
+var query  = 'india';
 var stream = client.stream('statuses/filter', {track: query});
 streamHandler(stream, io);
 
