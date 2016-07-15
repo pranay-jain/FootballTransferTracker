@@ -19,6 +19,7 @@ html
 		script(src="/socket.io/socket.io.js")
 	body
 		div(id='content')!= markup
+		script(type="text/json" id="initialRender")!=state
 
 		script.
 			var socket = io();

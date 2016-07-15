@@ -25,7 +25,7 @@ app.get('/results', routes.mainpage);
 
 // ---- Establishing connection with Twitter API 
 var client = new Twitter(config.twitter);	
-var query  = 'india';
+var query  = 'football, sports, sign player, transfer player, football transfer';
 var stream = client.stream('statuses/filter', {track: query});
 streamHandler(stream, io);
 

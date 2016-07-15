@@ -3,7 +3,8 @@ var Tweet = require('./model/MongoHandler');
 module.exports = function(stream, io) {
 
 	stream.on('data', function(data) {
-
+    
+    //console.log(data["entities"]["user_mentions"]["name"]);    
     if (data['user'] !== undefined) {
         var newTweet = {
     			twid: data['id_str'],

@@ -15,16 +15,20 @@ var tweetSchema = new mongoose.Schema(
 });
 
 tweetSchema.statics.getTweets = function(team) {
-	var regexQuery = '*' + team + "*"; 
-	var query = Tweet.find({'text': 'india'}, 'twid text name avatar');
+	var regexQuery = team; 
+	var query = Tweet.find({'text' : {$regex : regexQuery }}, 'twid text name avatar');
 	query.sort({date: 'desc'});
 	query.limit(10);
 
+	var tweets = []
+
 	query.exec(function(err, docs) {
 		if(err) return console.error(err);
-		console.log("Here");
-		console.log(JSON.stringify(docs, null, 5));
+		//console.log("Here");
+		// console.log(JSON.stringify(docs, null, 5));
+		tweets = docs;
 	});
+	callback(tweets);
 }
 
 module.exports = Tweet = mongoose.model('tweet', tweetSchema);
