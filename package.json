@@ -20,13 +20,8 @@
     "nodemon": "^1.9.2"
   },
   "scripts": {
-    "browserify": "browserify app.js > public/js/bundle.js",
+    "browserify": "browserify app.js -o ./public/js/bundle.js -t [ babelify --presets [ react ] ]",
     "build": "npm run browserify ",
     "start": "nodemon server.js"
-  },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
   }
 }
