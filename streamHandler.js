@@ -4,6 +4,7 @@ module.exports = function(stream, io) {
 
 	stream.on('data', function(data) {
     
+    //console.log(JSON.stringify(data, null, 5));   
     //console.log(data["entities"]["user_mentions"]["name"]);    
     if (data['user'] !== undefined) {
         var newTweet = {
@@ -11,6 +12,8 @@ module.exports = function(stream, io) {
     			text: data['text'],
     			name: data['user']['name'],
     			avatar: data['user']['profile_image_url'],
+          screenname: data['user']['screen_name'],
+          followers: data['user']['followers_count'], 
           date: data['created_at']
     		};
     }

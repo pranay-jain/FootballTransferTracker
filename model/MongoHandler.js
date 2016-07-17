@@ -11,24 +11,26 @@ var tweetSchema = new mongoose.Schema(
 	, text 		: String
 	, name 		: String
 	, avatar 	: String
+	, screenname: String
+	, followers	: Number
 	, date 		: Date
 });
 
-tweetSchema.statics.getTweets = function(team) {
+tweetSchema.statics.getTweets = function(team, callback) {
 	var regexQuery = team; 
-	var query = Tweet.find({'text' : {$regex : regexQuery }}, 'twid text name avatar');
+	var query = Tweet.find({'text' : {$regex : regexQuery, $options: 'i'}, 'followers': {$gte: 1000}}, 'twid text name avatar screenname');
 	query.sort({date: 'desc'});
-	query.limit(10);
+	query.limit(20);
 
 	var tweets = []
 
 	query.exec(function(err, docs) {
 		if(err) return console.error(err);
-		//console.log("Here");
-		// console.log(JSON.stringify(docs, null, 5));
 		tweets = docs;
+		//console.log(JSON.stringify(tweets,null,5));
+		callback(tweets);
 	});
-	callback(tweets);
+	
 }
 
 module.exports = Tweet = mongoose.model('tweet', tweetSchema);

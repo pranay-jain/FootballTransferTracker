@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react'),
+	Tweets = require('./Tweets.react');;
 
 module.exports = React.createClass({
 	render: function () {
@@ -8,7 +9,7 @@ module.exports = React.createClass({
 					<h2> {this.props.team} </h2>
 				</div>
 				<div className="mdl-grid mdl-cell--8-col">
-					<h2> {this.props.team} </h2>
+					<Tweets tweets = {this.props.tweets} />
 				</div>
 			</div>
 		)
