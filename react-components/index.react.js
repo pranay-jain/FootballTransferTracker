@@ -9,8 +9,8 @@ module.exports = React.createClass({
 				  		<h4>Welcome to Football Transfer Tracker</h4>
 					</div>
 					<div className="mdl-card__supporting">
-	    				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-	    				Mauris sagittis pellentesque lacus eleifend lacinia.
+	    				This is an app to find the latest tweets posted across Twitter to find the transfer news for your favourite football team.
+	    				Enter your favourite team to follow.
 	    			</div>
 	    			<div className="mdl-form">
 	    				<form action="/results" method="get">

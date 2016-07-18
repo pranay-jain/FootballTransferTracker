@@ -7,7 +7,6 @@ module.exports = React.createClass({
 
     var updated = this.state.tweets;
 
-    // Increment the unread count
     var count = this.state.count + 1;
 
     // Add tweet to the beginning of the tweets array
@@ -23,8 +22,7 @@ module.exports = React.createClass({
 
     return {
       tweets: props.tweets,
-      count: 0,
-      done: false
+      count: 0
     };
 
   },
@@ -34,14 +32,14 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function(){
-
+    console.log("mounted");
     // Preserve self reference
     var self = this;
 
-    // Initialize socket.io
-    var socket = io.connect();
+    var socket = io();
 
     socket.on('tweet', function (data) {
+        console.log("Received new tweet");
         self.addTweet(data);
     });
 

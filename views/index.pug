@@ -20,9 +20,6 @@ html
 		script(src="/js/bundle.js")
 	body
 		div(id='content')!= markup
-		script(type="text/json" id="initialTweets")!=state
-
-		script.
-			var socket = io();
+		script(type="application/json" id="initialTweets")!=state
 
 		

@@ -19,11 +19,10 @@ module.exports = function(stream, io) {
     }
 
   		var tweetEntry = new Tweet(newTweet);
-  		//console.log(JSON.stringify(tweetEntry, null, 5)); 		
 
-  		tweetEntry.save(function (err, tweet) {
+  		tweetEntry.save(function (err) {
   			if (err) return console.error(err);
-        io.emit('tweet', tweet);
+        io.emit('tweet', newTweet);
   		});
 	});
 }

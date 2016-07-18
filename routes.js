@@ -16,8 +16,7 @@ module.exports = {
 	mainpage: function(req, res) {
 		var response = req.query.team;
 		var tweets = Tweet.getTweets(response, function (tweets) {
-			var markup = ReactDOMServer.renderToString(<Interface team={response} tweets = {tweets} />);
-			//console.log(JSON.stringify(tweets));
+			var markup = ReactDOMServer.renderToString(<Interface team={response} tweets={tweets} />);
 
 			res.render('index', {
 				markup: markup,

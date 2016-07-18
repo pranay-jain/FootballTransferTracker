@@ -10,7 +10,7 @@ module.exports = React.createClass({
 			      	<img src={tweet.avatar} />
 			      </i>
 			      <a href={"http://www.twitter.com/" + tweet.screenname}><span>{tweet.name}</span></a>
-			      <cite>{tweet.screenname}</cite>
+			      <cite>{tweet.screenname}, {tweet.date.toString()}</cite>
 			      <span className="mdl-list__item-text-body">
 			        {tweet.text}
 			      </span>

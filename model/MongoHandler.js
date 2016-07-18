@@ -18,7 +18,7 @@ var tweetSchema = new mongoose.Schema(
 
 tweetSchema.statics.getTweets = function(team, callback) {
 	var regexQuery = team; 
-	var query = Tweet.find({'text' : {$regex : regexQuery, $options: 'i'}, 'followers': {$gte: 1000}}, 'twid text name avatar screenname');
+	var query = Tweet.find({'text' : {$regex : regexQuery, $options: 'i'}, 'followers': {$gte: 1000}}, 'twid text name avatar screenname date');
 	query.sort({date: 'desc'});
 	query.limit(20);
 

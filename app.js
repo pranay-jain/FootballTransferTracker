@@ -1,11 +1,11 @@
 var React = require('react'),
 	ReactDOM = require('react-dom');
 
-var TweetsApp = require('./react-components/interface.react');
+var Interface = require('./react-components/interface.react');
 
-var initialTweets = JSON.parse(document.getElementById('initialTweets'));
+var initialTweets = JSON.parse(document.getElementById('initialTweets').innerHTML);
 
 ReactDOM.render(
-	<TweetsApp tweets={initialTweets} />,
+	<Interface tweets={initialTweets} />,
 	document.getElementById('content')
 );
