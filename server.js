@@ -20,10 +20,6 @@ app.disable('etag');
 
 var io = require('socket.io')(server);
 
-// io.on('connection', function (socket) {
-// 	console.log("socket connected");
-// });
-
 app.get('/', routes.home);
 app.get('/results', routes.mainpage);
 

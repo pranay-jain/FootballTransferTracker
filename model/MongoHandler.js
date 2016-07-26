@@ -8,6 +8,7 @@ db.on('error', function () {
 var tweetSchema = new mongoose.Schema(
 {
 	  twid 		: String
+	, active 	: Boolean
 	, text 		: String
 	, name 		: String
 	, avatar 	: String
@@ -26,8 +27,8 @@ tweetSchema.statics.getTweets = function(team, callback) {
 
 	query.exec(function(err, docs) {
 		if(err) return console.error(err);
+
 		tweets = docs;
-		//console.log(JSON.stringify(tweets,null,5));
 		callback(tweets);
 	});
 	

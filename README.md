@@ -12,6 +12,8 @@ Firstly, make sure you have npm and NodeJS installed on your system. You would a
 
 1. Clone this repo using `git clone https://github.com/pranay-jain/FootballTransferTracker.git`
 2. Install all the dependencies using `npm install`
-3. Open the MongoDB shell and make a new database by called transfer-tweets -  `use transfer-tweets`
-4. Run the Node server using either `node server.js` or simply, `npm start`
-5. Open `http://localhost:3000/` to see the application running.
+3. In config.js, replace the values with your credentials for the Twitter API
+3. Go to the mongo folder and run the MongoDB using `mongod`
+4. Open the MongoDB shell and make a new database by called transfer-tweets -  `use transfer-tweets`
+5. Run the Node server using either `node server.js` or simply, `npm start`
+6. Open `http://localhost:3000/` to see the application running.

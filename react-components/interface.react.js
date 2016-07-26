@@ -32,15 +32,19 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function(){
-    console.log("mounted");
     // Preserve self reference
     var self = this;
 
     var socket = io();
 
     socket.on('tweet', function (data) {
-        console.log("Received new tweet");
+      var string = data.text.toLowerCase();
+      var substr = self.props.team.toLowerCase();
+      if(string.search(substr) >= 0 && data.followers >= 1000) {
+        data.active = true;
         self.addTweet(data);
+      }
+        
     });
 
   },
